@@ -25,6 +25,9 @@
       <br />
       <button @click="onSubmit">提交</button>
     </section>
+
+    <br />
+    <button @click="onClick">直接替换整个store</button>
   </div>
 </template>
 
@@ -51,5 +54,13 @@ const onSubmit = () => {
     store.userinfo = formData;
   });
   console.log("修改后", store.userinfo);
+};
+
+/**
+ * 替换整个store
+ */
+const onClick = () => {
+  store.$state = { counter: 168 };
+  console.log("现在的store", store);
 };
 </script>
