@@ -1,41 +1,71 @@
-# pinia-study
+# pinia 学习
 
-This template should help get you started developing with Vue 3 in Vite.
+## 创建项目
 
-## Recommended IDE Setup
+这里我们使用最新的 vue3 来构建项目
 
-[VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur) + [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin).
+```
+npm init vue@latest
 
-## Customize configuration
-
-See [Vite Configuration Reference](https://vitejs.dev/config/).
-
-## Project Setup
-
-```sh
-npm install
+>> 选项
 ```
 
-### Compile and Hot-Reload for Development
+## 初始化项目
 
-```sh
-npm run dev
+我们删除一些不必要的资源和文件目录
+
+## 安装 pinia
+
+```
+npm i pinia
 ```
 
-### Compile and Minify for Production
+## 全局引用 pinia
 
-```sh
-npm run build
+这里需要在 man.js 中引用并注册
+
+```
+# 引入
+import { createStore } from 'pinia'
+
+# 声明
+const store = createStore()
+
+# 注册
+app.use(store)
 ```
 
-### Run Unit Tests with [Vitest](https://vitest.dev/)
+## 创建一个 store
 
-```sh
-npm run test:unit
+其实就是创建一个模块
+
+/src/store/user.js
+
+```
+import { defineStore } from 'pinia'
+
+/**
+* 声明一个用户store
+ */
+export const useUserStore = defineStore('users',{
+
+})
 ```
 
-### Lint with [ESLint](https://eslint.org/)
+## 在页面中引用
 
-```sh
-npm run lint
+/src/pages/home/homePage.vue
+
+```
+<template>
+  <div>home</div>
+</template>
+
+<script setup>
+import { useUserStore } from "@/store/user";
+
+const store = useUserStore();
+console.log(store);
+</script>
+
 ```
