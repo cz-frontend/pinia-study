@@ -47,8 +47,8 @@ const onRename = () => {
 const formData = reactive({});
 const onSubmit = () => {
   console.log("修改前", store.userinfo);
-  store.$patch({
-    userinfo: formData,
+  store.$patch((store) => {
+    store.userinfo = formData;
   });
   console.log("修改后", store.userinfo);
 };
