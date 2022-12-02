@@ -7,6 +7,11 @@ export const useUserStore = defineStore("users", {
   state: () => {
     return {
       modulename: "users",
+      userinfo: {
+        name: "",
+        age: "",
+        desc: "",
+      },
     };
   },
 });
