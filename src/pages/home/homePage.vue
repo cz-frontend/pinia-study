@@ -28,6 +28,8 @@
 
     <br />
     <button @click="onClick">直接替换整个store</button>
+
+    <h1>通过getters获取store中的模块名称： {{ getModuleName }}</h1>
   </div>
 </template>
 
@@ -38,7 +40,7 @@ import { useUserStore } from "@/store/user";
 import ChildComponent from "./components/ChildComponent.vue";
 
 const store = useUserStore();
-const { modulename, userinfo } = storeToRefs(store);
+const { modulename, userinfo, getModuleName } = storeToRefs(store);
 
 const onRename = () => {
   store.modulename = "用户管理";

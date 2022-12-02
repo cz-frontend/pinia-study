@@ -14,4 +14,12 @@ export const useUserStore = defineStore("users", {
       },
     };
   },
+  getters: {
+    /**
+     * 获取模块名称
+     */
+    getModuleName: (state) => {
+      return state.modulename;
+    },
+  },
 });
