@@ -21,5 +21,8 @@ export const useUserStore = defineStore("users", {
     getModuleName: (state) => {
       return state.modulename;
     },
+    getUserInfo() {
+      return this.userinfo;
+    },
   },
 });
