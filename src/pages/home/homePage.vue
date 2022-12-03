@@ -31,6 +31,8 @@
 
     <h1>通过getters获取store中的模块名称： {{ getModuleName }}</h1>
     <h1>this形式获取getter数据： {{ getUserInfo.name }}</h1>
+    <h1>TOKEN: {{ token }}</h1>
+    <button @click="handleToken">设置token</button>
   </div>
 </template>
 
@@ -41,7 +43,8 @@ import { useUserStore } from "@/store/user";
 import ChildComponent from "./components/ChildComponent.vue";
 
 const store = useUserStore();
-const { modulename, userinfo, getModuleName, getUserInfo } = storeToRefs(store);
+const { modulename, userinfo, getModuleName, getUserInfo, token, setToken } =
+  storeToRefs(store);
 
 const onRename = () => {
   store.modulename = "用户管理";
@@ -65,5 +68,12 @@ const onSubmit = () => {
 const onClick = () => {
   store.$state = { counter: 168 };
   console.log("现在的store", store);
+};
+
+/**
+ * 设置token
+ */
+const handleToken = () => {
+  store.setToken("1111111");
 };
 </script>

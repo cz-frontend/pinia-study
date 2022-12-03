@@ -6,6 +6,7 @@ import { defineStore } from "pinia";
 export const useUserStore = defineStore("users", {
   state: () => {
     return {
+      token: "",
       modulename: "users",
       userinfo: {
         name: "",
@@ -23,6 +24,11 @@ export const useUserStore = defineStore("users", {
     },
     getUserInfo() {
       return this.userinfo;
+    },
+  },
+  actions: {
+    setToken(token) {
+      this.token = token;
     },
   },
 });
