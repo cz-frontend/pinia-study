@@ -29,9 +29,11 @@
 <script setup>
 import { ref, reactive, toRefs, defineExpose } from "vue";
 import { useNiticeManage } from "@/store/notice";
-import { CzModal } from "@/base-ui/index";
 import { ElMessage } from "element-plus";
 import { rulesConf } from "./config";
+import { CzModal } from "@/base-ui";
+
+const emits = defineEmits(["refresh"]);
 
 const displayModal = ref(false);
 const formConf = ref({
@@ -63,8 +65,17 @@ const dataFormSubmit = async (formEl) => {
     if (valid) {
       if (formConf.value.type === "added") {
         store.addedList({ id: new Date().getTime(), ...dataForm });
-        ElMessage.success("新增成功");
-        displayModal.value = false;
+        refForm.value.resetFields();
+
+        emits("refresh");
+        ElMessage({
+          type: "success",
+          duration: 800,
+          message: "操作成功",
+          onClose: () => {
+            displayModal.value = false;
+          },
+        });
       }
     }
   });

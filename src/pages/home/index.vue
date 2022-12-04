@@ -4,21 +4,40 @@
     @click-operation="handleOperation"
   >
     <template #operation> </template>
-    <template #content> body </template>
+    <template #content>
+      <TableView :data-source="list" @delete="deleteHandle" />
+    </template>
   </AppLayout>
 
   <!-- 弹窗 -->
-  <OperationModal ref="refOperation" />
+  <OperationModal ref="refOperation" @refresh="_loadData" />
 </template>
 
 <script setup>
-import { ref } from "vue";
+import { storeToRefs } from "pinia";
 import { AppLayout } from "@/components";
+import { ref, reactive, onMounted } from "vue";
+import { OperationButtonsConf } from "./config";
 import { useNiticeManage } from "@/store/notice";
 import OperationModal from "./operation-model.vue";
-import { OperationButtonsConf } from "./config/index";
+import TableView from "./components/TableView.vue";
 
 const store = useNiticeManage();
+const { list } = storeToRefs(store);
+
+/**
+ * 初始化页面数据
+ */
+onMounted(() => {
+  _loadData();
+});
+
+/**
+ * 获取列表数据
+ */
+const _loadData = () => {
+  // 业务逻辑
+};
 
 /**
  * 处理操作按钮点击
@@ -40,5 +59,7 @@ const displayModalHandle = (config) => {
 /**
  * 删除
  */
-const deleteHandle = () => {};
+const deleteHandle = (record, index) => {
+  store.deleteList(index);
+};
 </script>
