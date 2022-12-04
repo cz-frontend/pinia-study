@@ -7,7 +7,7 @@
   >
     <el-form
       ref="refForm"
-      model="dataForm"
+      :model="dataForm"
       :rules="rulesConf"
       label-width="88px"
     >
@@ -28,7 +28,9 @@
 
 <script setup>
 import { ref, reactive, toRefs, defineExpose } from "vue";
+import { useNiticeManage } from "@/store/notice";
 import { CzModal } from "@/base-ui/index";
+import { ElMessage } from "element-plus";
 import { rulesConf } from "./config";
 
 const displayModal = ref(false);
@@ -36,7 +38,7 @@ const formConf = ref({
   title: "",
   type: "",
 });
-const dataForm = ref({
+const dataForm = reactive({
   title: "",
   desc: "",
 });
@@ -53,12 +55,17 @@ const dataFormInit = (config) => {
 /**
  * 保存
  */
-const refForm = ref();
+const refForm = ref(null);
+const store = useNiticeManage();
 const dataFormSubmit = async (formEl) => {
   if (!formEl) return;
   await formEl.validate((valid) => {
     if (valid) {
-      alert("调用接口");
+      if (formConf.value.type === "added") {
+        store.addedList({ id: new Date().getTime(), ...dataForm });
+        ElMessage.success("新增成功");
+        displayModal.value = false;
+      }
     }
   });
 };

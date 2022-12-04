@@ -14,8 +14,11 @@
 <script setup>
 import { ref } from "vue";
 import { AppLayout } from "@/components";
+import { useNiticeManage } from "@/store/notice";
 import OperationModal from "./operation-model.vue";
 import { OperationButtonsConf } from "./config/index";
+
+const store = useNiticeManage();
 
 /**
  * 处理操作按钮点击
