@@ -2,8 +2,16 @@
   <AppHeader />
   <main>
     <div class="app-container">
-      <div class="operation-bar">
-        <slot name="operation" />
+      <div class="operation-bar" v-if="operationConf.length">
+        <template v-for="record in operationConf" :key="record.id">
+          <el-button
+            :type="record.operationBtnType"
+            :disabled="record.disabled"
+            @click="onOperation(record)"
+          >
+            {{ record.operationText }}
+          </el-button>
+        </template>
       </div>
       <slot name="content" />
     </div>
@@ -12,6 +20,23 @@
 
 <script setup>
 import AppHeader from "./components/AppHeader.vue";
+
+const emits = defineEmits(["click-operation"]);
+
+// props
+defineProps({
+  operationConf: {
+    type: Array,
+    default: () => {
+      return [];
+    },
+  },
+});
+
+// methods
+const onOperation = (record) => {
+  emits("click-operation", record);
+};
 </script>
 
 <style lang="less" scoped>
