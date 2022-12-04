@@ -9,7 +9,9 @@ import "element-plus/dist/index.css";
 const app = createApp(App);
 const store = createPinia();
 
-app.use(ElementPlus);
+app.use(ElementPlus, {
+  size: "mini",
+});
 app.use(store);
 app.use(router);
 
