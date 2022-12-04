@@ -54,7 +54,7 @@ export const useUserStore = defineStore('users',{
 
 ## 在页面中引用
 
-/src/pages/home/homePage.vue
+/src/pages/home/index.vue
 
 ```
 <template>

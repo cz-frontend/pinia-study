@@ -1,7 +1,7 @@
 <template>
   <header class="app-header">
     <div class="left-box">
-      <div class="logo">LOGO</div>
+      <div class="logo">锤子前端</div>
     </div>
     <div class="right-box">欢迎您，超级管理员!</div>
   </header>

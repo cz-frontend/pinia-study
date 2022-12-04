@@ -48,7 +48,7 @@ const onOperation = (record) => {
     display: flex;
     height: 40px;
     align-items: center;
-    background-color: #eee;
+    background-color: #fff;
     margin-bottom: 8px;
   }
 }
