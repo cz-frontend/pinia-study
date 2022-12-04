@@ -17,3 +17,11 @@ export const OperationButtonsConf = [
     operationBtnType: "danger",
   },
 ];
+
+/**
+ * 表单验证配置
+ */
+export const rulesConf = {
+  title: [{ required: true, message: "请天蝎通知主题", trigger: "blur" }],
+  desc: [{ required: true, message: "请天蝎通知描述", trigger: "blur" }],
+};

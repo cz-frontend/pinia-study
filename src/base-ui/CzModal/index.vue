@@ -18,11 +18,9 @@
   </el-dialog>
 </template>
 
-<script setup lang="ts">
-import { ref } from "vue";
-
+<script setup>
 const emit = defineEmits(["cancel", "confirm"]);
-const props = defineProps({
+defineProps({
   // 对话框的宽度
   width: {
     type: String,

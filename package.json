@@ -11,6 +11,8 @@
   },
   "dependencies": {
     "element-plus": "^2.2.26",
+    "eslint-define-config": "^1.12.0",
+    "eslint-plugin-prettier": "^4.2.1",
     "less": "^4.1.3",
     "less-loader": "^11.1.0",
     "normalize": "^0.3.1",
